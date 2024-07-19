@@ -17,7 +17,14 @@
                     "ipmc_entry", "mpls_inseg", "mpls_nexthop"] %}
             "{{crm_res}}_threshold_type": "percentage",
             "{{crm_res}}_low_threshold": "70",
-            "{{crm_res}}_high_threshold": "85"{% if not loop.last %},{% endif -%}
+            "{{crm_res}}_high_threshold": "85",
+{%- endfor %}
+{%- for crm_dash_res in ["vnet", "eni", "eni_ether_address_map", "ipv4_inbound_routing", "ipv6_inbound_routing", "ipv4_outbound_routing",
+                         "ipv6_outbound_routing", "ipv4_pa_validation", "ipv6_pa_validation", "ipv4_outbound_ca_to_pa", "ipv6_outbound_ca_to_pa",
+                         "ipv4_acl_group", "ipv6_acl_group", "ipv4_acl_rule", "ipv6_acl_rule"] %}
+            "dash_{{crm_dash_res}}_threshold_type": "percentage",
+            "dash_{{crm_dash_res}}_low_threshold": "70",
+            "dash_{{crm_dash_res}}_high_threshold": "85"{% if not loop.last %},{% endif -%}
 {% endfor %}
         }
     },
